@@ -1,7 +1,6 @@
 streamlit
 pandas
 openpyxl
-os
 numpy
 altair
 datetime
