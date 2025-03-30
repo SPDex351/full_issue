@@ -17,12 +17,13 @@ st.sidebar.image("galery/logo.jpg")
 st.title(":blue[SPD-EX statistics]")
 
 
-files = []
-def select_files():
-    for file in os.listdir('data'):
-        if file.endswith('.xlsx'):
-            files.append(os.path.join('data', file))
-    return list(files)
+def select_files(repo_path='.'):
+    files = []
+    for root, _, filenames in os.walk(repo_path):  # Проходим по всем папкам репо
+        for file in filenames:
+            if file.endswith('.xlsx'):
+                files.append(os.path.join(root, file))
+    return files
 
 list_data = select_files() #список файлов к выгрузке
 
@@ -75,7 +76,7 @@ with st.sidebar:
     st.caption('Local - Доставка по РК')
     st.caption('РФ/Major - Доставка по РФ и Major')
     chose_branch = st.selectbox('Выберите Филиал', Branch, index=None)
-    chose_status = st.selectbox('Выберите Статус', Status, index=None)
+
 
 
 def group_first_table():
