@@ -6,7 +6,7 @@ import altair as alt
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-
+#new
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
    page_title = "spd_statistic",
