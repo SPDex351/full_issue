@@ -4,4 +4,4 @@ openpyxl
 numpy
 altair
 datetime
-relativedelta
+python-dateutil
