@@ -95,6 +95,7 @@ with st.sidebar:
 def group_table(table, group_column:str):
     group_table = table.copy()
     filters = {
+        'Metric': chose_metric,  
         'Metric': chose_metric,
         'Type': chose_type,
         'Ответственный филиал': chose_branch,
