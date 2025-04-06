@@ -169,9 +169,9 @@ def grapfic_sla():
 
 
 def kpi_metric():
-    #current_month = datetime.now().strftime('%B') #поставить верный фильтр
-    current_month = (datetime.now() - relativedelta(months=1)).strftime('%B')
-    last_month = (datetime.now() - relativedelta(months=2)).strftime('%B')
+    current_month = datetime.now().strftime('%B') #поставить верный фильтр
+    #current_month = (datetime.now() - relativedelta(months=1)).strftime('%B')
+    last_month = (datetime.now() - relativedelta(months=1)).strftime('%B')
     kpi_data = data_sla[(data_sla['Месяц']==current_month) & (data_sla['Metric'].isin(['Достигнут SLA', 'Превышен SLA']))] \
         .drop(columns=['Месяц', 'Доля'])
     kpi_data_2 = data_sla[(data_sla['Месяц']==last_month) & (data_sla['Metric'].isin(['Достигнут SLA', 'Превышен SLA']))] \
