@@ -99,6 +99,8 @@ count_inside_city = sub_data_new[(sub_data_new['Вид отправки'] == 'Г
 #Группировка заказов по статусам
 inside_city = sub_data_new[(sub_data_new['Вид отправки'] == 'Город') &
                                 (sub_data_new['Регион-получатель'] == 'Алматы город')]
+if chose_month_change is not None:
+    inside_city = inside_city[inside_city['Месяц_изменения']==chose_month_change]
 inside_city = pd.pivot_table(inside_city, values='Вид отправки', index='Status', columns='Месяц_изменения',
                           aggfunc='count').reset_index()
 month_order = [m for m in ['January', 'February', 'March', 'April', 'May', 'June',
@@ -109,6 +111,8 @@ inside_city = inside_city[order].reset_index(drop=True)
 ##########
 out_of_city = sub_data_new[(sub_data_new['Вид отправки'] == 'Город') &
                                 (sub_data_new['Регион-получатель'] == 'Алматинская область')]
+if chose_month_change is not None:
+    out_of_city = out_of_city[out_of_city['Месяц_изменения']==chose_month_change]
 out_of_city = pd.pivot_table(out_of_city, values='Вид отправки', index='Город-получатель', columns='Месяц_изменения',
                           aggfunc='count').reset_index()
 month_order = [m for m in ['January', 'February', 'March', 'April', 'May', 'June',
@@ -118,6 +122,8 @@ order = ['Город-получатель']+month_order
 out_of_city = out_of_city[order].reset_index(drop=True)
 ############
 to_regoins = sub_data_new[sub_data_new['Вид отправки'] == 'Межгород']
+if chose_month_change is not None:
+    to_regoins = to_regoins[out_of_city['Месяц_изменения']==chose_month_change]
 to_regoins = pd.pivot_table(to_regoins, values='Вид отправки', index='Регион-получатель',
                         columns='Месяц_изменения', aggfunc='count').reset_index()
 month_order = [m for m in ['January', 'February', 'March', 'April', 'May', 'June',
