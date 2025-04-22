@@ -40,7 +40,7 @@ sub_data = data_load(list_data)  #Исходные данные
 today = datetime.today().date()
 ten_am = time(10, 0, 0)
 time_result = datetime.combine(today, ten_am)
-
+sub_data
 
 
 @st.cache_data
